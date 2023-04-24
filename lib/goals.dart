@@ -10,12 +10,12 @@ class SusafPage extends StatelessWidget {
         title: Text('SuSAf'),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 300.0, vertical: 150.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
-              children: [
+              children: const [
                 Icon(Icons.eco),
                 SizedBox(width: 8),
                 Text(
@@ -24,46 +24,49 @@ class SusafPage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 32),
-            Text(
+            const SizedBox(height: 32),
+            const Text(
               'Product Name:',
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 8),
-            TextField(
+            const SizedBox(height: 8),
+            const TextField(
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
               ),
             ),
-            SizedBox(height: 16),
-            Text(
+            const SizedBox(height: 16),
+            const Text(
               'Company Goal:',
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 8),
-            TextField(
+            const SizedBox(height: 8),
+            const TextField(
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
               ),
             ),
-            SizedBox(height: 16),
-            Text(
+            const SizedBox(height: 16),
+            const Text(
               'Product Description:',
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 8),
-            TextField(
+            const SizedBox(height: 8),
+            const TextField(
               maxLines: 5,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
               ),
             ),
-            Expanded(child: Container()),
+            const SizedBox(
+              height: 50,
+            ),
             SizedBox(
               width: double.infinity,
+              height: 50,
               child: ElevatedButton(
                 onPressed: () {},
-                child: Text('Next'),
+                child: const Text('Next'),
               ),
             ),
           ],
