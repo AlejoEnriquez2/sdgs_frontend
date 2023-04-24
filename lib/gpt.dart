@@ -22,17 +22,17 @@ class _FullScreenFormState extends State<FullScreenForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Full Screen Form'),
+        title: const Text('Full Screen Form'),
       ),
       body: Form(
         key: _formKey,
         child: ListView(
           controller: _scrollController,
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           children: [
             TextFormField(
               autofocus: true,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Name',
               ),
               validator: (value) {
@@ -49,7 +49,7 @@ class _FullScreenFormState extends State<FullScreenForm> {
             ),
             SizedBox(height: MediaQuery.of(context).size.height),
             TextFormField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Email',
               ),
               validator: (value) {
@@ -66,7 +66,7 @@ class _FullScreenFormState extends State<FullScreenForm> {
             ),
             SizedBox(height: MediaQuery.of(context).size.height),
             TextFormField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Phone Number',
               ),
               validator: (value) {
@@ -89,7 +89,7 @@ class _FullScreenFormState extends State<FullScreenForm> {
                   _submitForm();
                 }
               },
-              child: Text('Submit'),
+              child: const Text('Submit'),
             ),
           ],
         ),
