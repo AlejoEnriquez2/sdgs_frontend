@@ -1,5 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:sdgs_frontend/formService.dart';
 import 'package:sdgs_frontend/susForm.dart';
+import 'package:http/http.dart' as http;
 
 class FormPage extends StatefulWidget {
   const FormPage({Key? key}) : super(key: key);
@@ -525,7 +529,8 @@ class _FormPageState extends State<FormPage> {
             const SizedBox(height: 50),
             ElevatedButton(
                 child: Text("Send"),
-                onPressed: () {
+                onPressed: () async {
+                  final stateManager = FormService();
                   print(sus.answerEco);
                   print(sus.answerTec);
                   print(sus.answerEnv);
