@@ -7,7 +7,7 @@ class SusafPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('SuSAf'),
+        title: Text('SusAF'),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 300.0, vertical: 150.0),
@@ -61,13 +61,13 @@ class SusafPage extends StatelessWidget {
             const SizedBox(
               height: 50,
             ),
-            SizedBox(
+            const SizedBox(
               width: double.infinity,
               height: 50,
-              child: ElevatedButton(
-                onPressed: () {},
-                child: const Text('Next'),
-              ),
+              // child: ElevatedButton(
+              //   onPressed: () {},
+              //   child: const Text('Next'),
+              // ),
             ),
           ],
         ),
