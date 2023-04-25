@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
+import 'package:sdgs_frontend/print.dart';
 import 'package:sdgs_frontend/susForm.dart';
 
 class FormService extends ChangeNotifier {
@@ -11,7 +12,7 @@ class FormService extends ChangeNotifier {
   final String _baseUrl = 'http://localhost:5005';
   String result = "";
 
-  Future<void> makePostRequest(sus) async {
+  Future<void> makePostRequest(sus, context) async {
     resultNotifier.value = RequestLoadInProgress();
     final url = Uri.parse('$_baseUrl/api/susai');
     final headers = {"Content-type": "application/json"};
@@ -21,7 +22,12 @@ class FormService extends ChangeNotifier {
     final response = await http.post(url, headers: headers, body: json);
     print('Status code: ${response.statusCode}');
     print('Body: ${response.body}');
-    _handleResponse(response);
+
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) =>
+                SusafTable(jsonData: response.body.toString())));
   }
 
   void _handleResponse(Response response) {
