@@ -58,7 +58,7 @@ class _SusafTableState extends State<SusafTable> {
   void initState() {
     super.initState();
     final parsedJson = json.decode(widget.jsonData);
-    final productsJson = parsedJson['product_features'];
+    final productsJson = parsedJson['features'];
     companyName = parsedJson['company_name'];
     opportunities = parsedJson['opportunities'];
     threats = parsedJson['threats'];
