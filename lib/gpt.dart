@@ -531,11 +531,21 @@ class _FormPageState extends State<FormPage> {
                 child: Text("Send"),
                 onPressed: () async {
                   final stateManager = FormService();
-                  print(sus.answerEco);
-                  print(sus.answerTec);
-                  print(sus.answerEnv);
-                  print(sus.answerSoc);
-                  print(sus.answerInd);
+                  stateManager.makePostRequest(sus);
+                  ValueListenableBuilder<RequestState>(
+                    valueListenable: stateManager.resultNotifier,
+                    builder: (context, requestState, child) {
+                      if (requestState is RequestLoadInProgress) {
+                        return CircularProgressIndicator();
+                      } else if (requestState is RequestLoadSuccess) {
+                        return Expanded(
+                            child: SingleChildScrollView(
+                                child: Text(requestState.body)));
+                      } else {
+                        return Container();
+                      }
+                    },
+                  );
                 }),
           ],
         ),
