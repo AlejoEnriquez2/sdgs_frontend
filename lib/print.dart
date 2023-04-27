@@ -133,6 +133,9 @@ class _SusafTableState extends State<SusafTable> {
   @override
   Widget build(BuildContext context) {
     // final logger = Logger();
+    int maxLength = (threats.length > opportunities.length)
+        ? threats.length
+        : opportunities.length;
 
     // logger.d(susafdata.toString());
     return Scaffold(
@@ -155,80 +158,151 @@ class _SusafTableState extends State<SusafTable> {
       ),
       body: Container(
         // padding: const EdgeInsets.all(16.0),
-        child: Center(
-          child: SingleChildScrollView(
-            // scrollDirection: Axis.horizontal,
-            child: Column(
-              children: <Widget>[
-                Text(
-                  companyName,
-                  style: TextStyle(fontSize: 32),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(1.0),
-                  child: DataTable(
-                    dataRowHeight: 50,
-                    showCheckboxColumn: false,
-                    horizontalMargin: 20,
-                    columnSpacing: 30,
-                    columns: const [
-                      DataColumn(label: Text("Feature")),
-                      DataColumn(label: Text("Effect")),
-                      DataColumn(label: Text("Order")),
-                      DataColumn(label: Text("Dimension")),
-                    ],
-                    rows: susafdata.map((data) {
-                      return DataRow(
-                        cells: [
-                          DataCell(
-                            Text(data.feature.toString()),
-                          ),
-                          DataCell(
-                            Wrap(children: [
-                              Text(
-                                data.effect,
-                                maxLines: 3,
-                                overflow: TextOverflow.clip,
-                              ),
-                            ]),
-                          ),
-                          DataCell(
-                            Text(data.order.toString()),
-                          ),
-                          DataCell(
-                            Text(data.dimension),
-                          ),
-                        ],
-                        onSelectChanged: (bool? isSelected) {
-                          if (isSelected!) {
-                            _showEditPopup(data); // Show the edit popup
-                          }
-                        },
-                      );
-                    }).toList(),
-                  ),
-                ),
-                SizedBox(height: 40),
-                DataTable(
-                  columns: [
-                    DataColumn(label: Text('Threats')),
-                    DataColumn(label: Text('Opportunities')),
+        child: SingleChildScrollView(
+          // scrollDirection: Axis.horizontal,
+          child: Column(
+            children: <Widget>[
+              SizedBox(
+                height: 30,
+              ),
+              Text(
+                companyName,
+                style: const TextStyle(fontSize: 32),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(1.0),
+                child: DataTable(
+                  dataRowHeight: 50,
+                  showCheckboxColumn: false,
+                  horizontalMargin: 20,
+                  columnSpacing: 30,
+                  columns: const [
+                    DataColumn(label: Text("Feature")),
+                    DataColumn(label: Text("Effect")),
+                    DataColumn(label: Text("Order")),
+                    DataColumn(label: Text("Dimension")),
                   ],
-                  rows: List.generate(max(threats.length, opportunities.length),
-                      (index) {
-                    final threat = index < threats.length ? threats[index] : '';
-                    final opportunity = index < opportunities.length
-                        ? opportunities[index]
-                        : '';
-
-                    return DataRow(cells: [
-                      DataCell(Text(threat)),
-                      DataCell(Text(opportunity)),
-                    ]);
-                  }),
+                  rows: susafdata.map((data) {
+                    return DataRow(
+                      cells: [
+                        DataCell(
+                          Text(data.feature.toString()),
+                        ),
+                        DataCell(
+                          Wrap(children: [
+                            Text(
+                              data.effect,
+                              maxLines: 3,
+                              overflow: TextOverflow.clip,
+                            ),
+                          ]),
+                        ),
+                        DataCell(
+                          Text(data.order.toString()),
+                        ),
+                        DataCell(
+                          Text(data.dimension),
+                        ),
+                      ],
+                      onSelectChanged: (bool? isSelected) {
+                        if (isSelected!) {
+                          _showEditPopup(data); // Show the edit popup
+                        }
+                      },
+                    );
+                  }).toList(),
                 ),
-              ],
-            ),
+              ),
+              const SizedBox(height: 40),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 40.0, vertical: 28.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Opportunities',
+                      style: TextStyle(
+                        fontSize: 22.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 8.0),
+                    Text(
+                      opportunities,
+                      style: const TextStyle(
+                        fontSize: 18.0,
+                      ),
+                    ),
+                    const SizedBox(height: 16.0),
+                    const Text(
+                      'Threats',
+                      style: TextStyle(
+                        fontSize: 22.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 8.0),
+                    Text(
+                      threats,
+                      style: const TextStyle(
+                        fontSize: 18.0,
+                      ),
+                    ),
+                    const SizedBox(height: 16.0),
+
+                    //////
+                    const Text(
+                      'Actions',
+                      style: TextStyle(
+                        fontSize: 22.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 8.0),
+                    Text(
+                      actions,
+                      style: const TextStyle(
+                        fontSize: 18.0,
+                      ),
+                    ),
+                  ],
+                ),
+              )
+
+              // ListView.builder(
+              //   shrinkWrap: true,
+              //   itemCount: threats.length,
+              //   itemBuilder: (context, index) {
+              //     return Text(threats.);
+              //   },
+              // ),
+              // ListView.builder(
+              //   shrinkWrap: true,
+              //   itemCount: actions.length,
+              //   itemBuilder: (context, index) {
+              //     return Text(actions[index]);
+              //   },
+              // )
+              // DataTable(
+              //   columns: [
+              //     DataColumn(label: Text('Threats')),
+              //     DataColumn(label: Text('Opportunities')),
+              //   ],
+              //   rows: List<DataRow>.generate(
+              //     maxLength,
+              //     (index) => DataRow(
+              //       cells: [
+              //         DataCell(
+              //             Text(index < threats.length ? threats[index] : '')),
+              //         DataCell(Text(index < opportunities.length
+              //             ? opportunities[index]
+              //             : '')),
+              //       ],
+              //     ),
+              //   ),
+              // ),
+            ],
           ),
         ),
       ),
@@ -238,7 +312,6 @@ class _SusafTableState extends State<SusafTable> {
 
 Future<void> printTable() async {
   final libreBaskerville = await PdfGoogleFonts.libreBaskervilleRegular();
-
   final List<String> headerTitles = ['Feature', 'Effect', 'Order', 'Dimension'];
   final List<pw.TableRow> headerRows = headerTitles.map((title) {
     return pw.TableRow(
@@ -265,10 +338,10 @@ Future<void> printTable() async {
             // 1: pw.FixedColumnWidth(100),
             // 2: pw.FlexColumnWidth(),
 
-            0: pw.IntrinsicColumnWidth(),
-            1: pw.FixedColumnWidth(250),
-            2: pw.FixedColumnWidth(100),
-            3: pw.FixedColumnWidth(100),
+            0: const pw.IntrinsicColumnWidth(),
+            1: const pw.FixedColumnWidth(250),
+            2: const pw.FixedColumnWidth(100),
+            3: const pw.FixedColumnWidth(100),
           },
           headers: const ['Feature', 'Effect', 'Order', 'Dimension'],
           // headers: header,

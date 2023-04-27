@@ -169,9 +169,59 @@ class _FormPageState extends State<FormPage> {
         title: const Text("Questions A"),
         content: Column(
           children: [
-            const Text("Answer a questions for the SOCIAL impact"),
+            const Text("Answer questions for the SOCIAL impact"),
 
             //////// QUESTION 1 /////////
+            DropdownButtonFormField<String>(
+                value:
+                    "How can the product or service affect a person's sense of belonging to these groups?",
+                items: const [
+                  DropdownMenuItem(
+                      value:
+                          "How can the product or service affect a person's sense of belonging to these groups?",
+                      child: Text(
+                          "How can the product or service affect a person's sense of belonging to these groups?")),
+                  DropdownMenuItem(
+                      value:
+                          'How can the product or service change the trust between the users and the business that owns the system?',
+                      child: Text(
+                          'How can the product or service change the trust between the users and the business that owns the system?')),
+                  DropdownMenuItem(
+                    value:
+                        'How can the product or service impact on how people perceive others?',
+                    child: Text(
+                        'How can the product or service impact on how people perceive others?'),
+                  ),
+                  DropdownMenuItem(
+                    value:
+                        'How can it affect users with different backgrounds, age groups, education levels, or other differences?',
+                    child: Text(
+                        'How can it affect users with different backgrounds, age groups, education levels, or other differences?'),
+                  ),
+                  DropdownMenuItem(
+                    value:
+                        'How can the system make people be treated differently from each other? (think data analytics or decision support)',
+                    child: Text(
+                        'How can the system make people be treated differently from each other? (think data analytics or decision support)'),
+                  ),
+                  DropdownMenuItem(
+                    value:
+                        'How can the product or service change how people create networks, participate in group work, or support arguments with others?',
+                    child: Text(
+                        'How can the product or service change how people create networks, participate in group work, or support arguments with others?'),
+                  ),
+                ],
+                onChanged: (value) {
+                  print(value);
+                  sus.questionSoc = value ??
+                      "How can the product or service affect a person's sense of belonging to these groups?";
+                }),
+            const SizedBox(height: 15),
+            CustomInput(
+              onChanged: (value) => sus.answerSoc = value,
+              hint: "Social Answer",
+              inputBorder: OutlineInputBorder(),
+            ),
             DropdownButtonFormField<String>(
                 value:
                     "How can the product or service affect a person's sense of belonging to these groups?",

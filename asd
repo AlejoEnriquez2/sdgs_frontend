@@ -1,13 +1,4 @@
-import 'package:flutter/material.dart';
-import 'gpt.dart';
-import 'package:provider/provider.dart';
-import 'print.dart';
-
-void main() {
-  runApp(const MyApp());
-}
-
-String response = '''{
+{
   "company_name": "Elisa",
   "company_goals": "Climate action, circular economy, responsible supply chain, Digital inclusion, Employee well-being.",
   "company_mission": "Elisa's mission is to create sustainable digital life for their customers and society. They aim to achieve this mission by providing innovative and reliable services and solutions that are driven by customer needs and preferences, while at the same time ensuring sustainable and responsible business practices.",
@@ -42,52 +33,4 @@ String response = '''{
   "threats": "The consumption of energy and resources in the production and distribution of content and infrastructure can have negative impacts on the environment and contribute to climate change.",
   "opportunities": "Elisa can explore ways to reduce the environmental impact of their content production and distribution, such as using renewable energy sources and optimizing their infrastructure. They can also promote sustainable consumption habits among their users.",
   "actions": "Elisa can conduct a sustainability assessment of their content production and distribution processes and identify areas for improvement. They can also communicate their sustainability efforts to their customers and stakeholders to raise awareness and promote sustainable practices." 
-}''';
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(primarySwatch: Colors.green),
-      home: const FormPage(),
-    );
-  }
 }
-
-
-// ___________________
-
-
-// import 'package:provider/provider.dart';
-
-// void main() => runApp(AppState());
-
-// class AppState extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MultiProvider(
-//       providers: [ChangeNotifierProvider(create: (_) => ProductsService())],
-//       child: MyApp(),
-//     );
-//   }
-// }
-
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       title: 'SusAI App',
-//       initialRoute: 'home',
-//       routes: {
-//         'home': (_) => FormPage(),
-//         // 'home'    : ( _ ) => HomeScreen(),
-//         // 'product' : ( _ ) => ProductScreen(),
-//       },
-//     );
-//   }
-// }
