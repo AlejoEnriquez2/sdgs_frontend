@@ -46,8 +46,6 @@ class SusafTable extends StatefulWidget {
 }
 
 class _SusafTableState extends State<SusafTable> {
-  // List<SusafData> susafdata = [];
-
   // Add a TextEditingController for each cell to handle edits
   TextEditingController idController = TextEditingController();
   TextEditingController effectController = TextEditingController();
@@ -175,7 +173,7 @@ class _SusafTableState extends State<SusafTable> {
                   dataRowHeight: 50,
                   showCheckboxColumn: false,
                   horizontalMargin: 20,
-                  columnSpacing: 30,
+                  columnSpacing: 15,
                   columns: const [
                     DataColumn(label: Text("Feature")),
                     DataColumn(label: Text("Effect")),
@@ -269,39 +267,6 @@ class _SusafTableState extends State<SusafTable> {
                   ],
                 ),
               )
-
-              // ListView.builder(
-              //   shrinkWrap: true,
-              //   itemCount: threats.length,
-              //   itemBuilder: (context, index) {
-              //     return Text(threats.);
-              //   },
-              // ),
-              // ListView.builder(
-              //   shrinkWrap: true,
-              //   itemCount: actions.length,
-              //   itemBuilder: (context, index) {
-              //     return Text(actions[index]);
-              //   },
-              // )
-              // DataTable(
-              //   columns: [
-              //     DataColumn(label: Text('Threats')),
-              //     DataColumn(label: Text('Opportunities')),
-              //   ],
-              //   rows: List<DataRow>.generate(
-              //     maxLength,
-              //     (index) => DataRow(
-              //       cells: [
-              //         DataCell(
-              //             Text(index < threats.length ? threats[index] : '')),
-              //         DataCell(Text(index < opportunities.length
-              //             ? opportunities[index]
-              //             : '')),
-              //       ],
-              //     ),
-              //   ),
-              // ),
             ],
           ),
         ),
@@ -363,10 +328,9 @@ Future<void> printTable() async {
       pageFormat: PdfPageFormat.a4,
       build: (context) => [
         pdfWidgets.Header(level: 0, text: 'Threats and Opportunities'),
-        pdfWidgets.Paragraph(text: 'Threats: ${threats.join(", ")}'),
-        pdfWidgets.Paragraph(
-            text: 'Opportunities: ${opportunities.join(", ")}'),
-        pdfWidgets.Paragraph(text: 'Actions: ${actions.join(", ")}'),
+        pdfWidgets.Paragraph(text: 'Threats: ${threats}'),
+        pdfWidgets.Paragraph(text: 'Opportunities: ${opportunities}'),
+        pdfWidgets.Paragraph(text: 'Actions: ${actions}'),
       ],
     ),
   );
